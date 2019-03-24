@@ -1,4 +1,4 @@
-/*如果索引(i)大於索引(i+1)就讓兩個索引的資料對調*/
+/*如果索引(i)大於索引(i+1)就讓兩個索引的資料對調(由小到大排序)*/
 /*void sub_Bubble_Sort(int*,int);*//*氣泡排序法*/
 void sub_Bubble_Sort(int*array,int size)/*(陣列初始位址,陣列大小)*/
 {
