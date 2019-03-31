@@ -1,56 +1,59 @@
-/*矩陣轉換的副程式*/ 
-#include<iostream>
-using namespace std;
-/*矩陣翻轉*/
-bool sub_Matrix_Flipr(int**,int [2],char);
-/*sub_Matrix_Flipr(需轉換的陣列名,[x][]，x的值,[][y]，y的值,如何轉換);*/
-/*轉換接受之字元:U(向上),D(向下),R(向右),L(向左)*/ 
-int main()
-{
-	int i=0;
-	int Array[2][2]={1,2,3,4};
-	int*Y[2];
-	bool BL=true;
-	//int**Array=new int*[2]();
-	//for(i=0;i<2;i++)
-	//	Array[i]=new int[2]();
-	int A[2]={2,2};
-	for(i=0;i<2;i++)
-	{
-		Y[i]=Array[i];
-	}
-	
-	BL=sub_Matrix_Flipr(Y,A,'L');
-	cout << BL;
-	//delete [] Array;
-	//delete [] Y;
-}
-bool sub_Matrix_Flipr(int**array,int C[2],char s)
+/*矩陣翻轉的副程式*/ 
+/*bool sub_Matrix_Flipr(int**,int,int);*//*回傳true代表正常執行，反之執行失敗*/
+/*sub_Matrix_Flipr(需轉換的陣列名,x,y);「array[x][y]」*/
+bool sub_Matrix_Flipr(int**array,int i,int h)
 {
 	
-	if(C[0]>=C[1])int i_0=C[0],i_1=C[1];
-	else int i_0=C[1],i_1=C[0];
+	//cout << "==sub_Matrix_Flipr==" << endl;
+	bool S=false;/*執行錯誤*/ 
+	int i_long=0,i_Short=0;
+	int longest = (( i >= h)?i:h)-1;//陣列最長長度。 
+	short Shortest= ((i >= h)?h:i)-1;//陣列最短長度。
+	//cout << "longest=" << longest << ",Shortest=" << Shortest << endl;
 	int G=0;/*G暫存資料*/ 
-	if(s=='U')
+	if(i>=h)/*判斷陣列為垂直的*/ 
 	{
-		if(C[0]>=C[1])
+		//cout << "C[0]>=C[1]"<< endl;
+		for(i_long=0;i_long<=longest;i_long++)
 		{
-		//	G=
+			if((longest+1)%2==1)/*如果最長(longrst+1)為奇數。*/
+			{
+				if(longest-i_long==i_long)break;/*讓i_long跑到(longest-i_long)和i_long一樣為止，防止二次替換。*/ 
+			}
+			else/*反之如果為偶數*/ 
+			{
+				if(((longest)/2)+1==i_long)break;/*跑到i_long再加1後會跑到的部分為止。*/ 
+			}
+			for(i_Short=0;i_Short<=Shortest;i_Short++)
+			{
+				G=array[i_long][i_Short];
+				array[i_long][i_Short]=array[longest-i_long][i_Short];
+				array[longest-i_long][i_Short]=G;
+			}
 		}
+		S=true;/*迴圈有成功跑到並且跑完。*/
 	}
-	else if(s=='D')
+	else if(i<=h)/*判斷陣列為水平的*/
 	{
-		
+		//cout << "C[0]<=C[1]"<< endl;
+		for(i_long=0;i_long<=longest;i_long++)
+		{
+			if((longest+1)%2==1)/*如果最長(longrst+1)為奇數。*/
+			{
+				if(longest-i_long==i_long)break;/*如果最長(longrst+1)為奇數。*/
+			}
+			else
+			{
+				if(((longest)/2)+1==i_long)break;/*跑到i_long再加1後會跑到的部分為止。*/ 
+			}
+			for(i_Short=0;i_Short<=Shortest;i_Short++)
+			{
+				G=array[i_Short][i_long];
+				array[i_Short][i_long]=array[i_Short][longest-i_long];
+				array[i_Short][longest-i_long]=G;
+			}
+		}
+		S=true;/*迴圈有成功跑到並且跑完。*/
 	}
-	else if(s=='R')
-	{
-		
-	}
-	else if(s=='L')
-	{
-		
-	}
-	else return false;/*執行錯誤*/ 
-	return true;/*執行成功*/ 
+	return S;/*執行成功*/ 
 }
-
