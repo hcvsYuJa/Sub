@@ -1,6 +1,7 @@
 /*矩陣翻轉的副程式*/ 
-/*bool sub_Matrix_Flipr(int**,int,int);*//*回傳true代表正常執行，反之執行失敗*/
-/*sub_Matrix_Flipr(需轉換的陣列名,x,y);「array[x][y]」*/
+/*bool sub_Matrix_Flipr(int**,int,int,char);*//*回傳true代表正常執行，反之執行失敗*/
+/*sub_Matrix_Flipr(需轉換的陣列名,x,y,Mode);「array[x][y]」*/
+/*Mode:'U'上下翻轉 , 'A'左右翻轉*/
 bool sub_Matrix_Flipr(int**array,int i,int h,char C)
 {
 	
