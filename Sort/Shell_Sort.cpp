@@ -21,7 +21,6 @@ void MeFun_Sort_Shell(int*arr,int NT)
                             flag='1';
                         }
                         j=j-2*N;
-
                     }
                 }
                 else if(flag=='1')
