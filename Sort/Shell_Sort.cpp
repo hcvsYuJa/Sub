@@ -1,5 +1,9 @@
-void MeFun_Sort_Shell(int*arr,int NT)
+void MeFun_Sort_Shell(int*arr,int NT,char chose)
 {/*謝爾排序法*/
+/*
+chose -> '<'(右邊比較大，由小到大排序)
+        -> '>'(左邊比較大，由大到小排序)
+*/
     int N=NT/2,j=0,c=0,K=0,before_j=0;
     char flag = '0';
     while(N!=0)
@@ -8,7 +12,7 @@ void MeFun_Sort_Shell(int*arr,int NT)
         {
             for(j=K;(j+N)<NT;j=j+N)
             {
-                if(arr[j]>arr[j+N])
+                if(((arr[j]>arr[j+N])&&chose=='<')||((arr[j]<arr[j+N])&&chose=='>'))
                 {
                     c=arr[j];
                     arr[j]=arr[j+N];
@@ -21,6 +25,7 @@ void MeFun_Sort_Shell(int*arr,int NT)
                             flag='1';
                         }
                         j=j-2*N;
+
                     }
                 }
                 else if(flag=='1')
