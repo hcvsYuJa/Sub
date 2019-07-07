@@ -1,4 +1,4 @@
-void MeFun_Sort_Shell(int*arr,int NT,char chose)
+void MeFun_Sort_Shell(int*arr,int NT,char chose)/*arr[int陣列](一維度)，NT[int]陣列大小，chose[char]排序方式*/
 {/*謝爾排序法*/
 /*
 chose -> '<'(右邊比較大，由小到大排序)
