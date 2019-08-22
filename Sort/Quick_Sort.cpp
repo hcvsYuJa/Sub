@@ -5,7 +5,7 @@ void change(int*a,int*b)
     *a=*b;
     *b=Val;
 }
-void Quick_Sort(int*arr,int index_Key,int index_End)
+void Quick_Sort(int*arr,int index_Key,int index_End)/*index_Key->排序頭，排序尾->index_End*/
 {
     int Key=arr[index_Key];
     if(index_Key<index_End)
